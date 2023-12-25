@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import NewItemForm, EditItemForm
 from .models import Category, Item
-
+from wishlist.models import Wishlist
 def items(request):
     query = request.GET.get('query', '')
     category_id = request.GET.get('category', 0)
@@ -77,3 +77,10 @@ def delete(request, pk):
     item.delete()
 
     return redirect('dashboard:index')
+
+@login_required
+def add_to_wishlist(request, pk):
+    item = get_object_or_404(Item, pk=pk)
+    wishlist, created = Wishlist.objects.get_or_create(user=request.user)
+    wishlist.items.add(item)
+    return redirect('wishlist:index')

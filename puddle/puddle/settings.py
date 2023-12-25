@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "conversation",
     "core",
+    "wishlist",
     "dashboard",
     "item",
 ]

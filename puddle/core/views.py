@@ -2,6 +2,9 @@ from django.shortcuts import render,redirect
 from item.models import Category,Item
 from django.contrib.auth.models import User
 from .forms import SignupForm
+from django.contrib.auth import views as auth_views
+from django.contrib.auth import login,logout,authenticate
+
 
 # Create your views here.
 def index(request):
@@ -21,3 +24,9 @@ def signup(request):
     else:
         form = SignupForm()
     return render(request, 'core/signup.html', {'form': form})
+def logout_view(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('/')
+    else:
+        return render(request, 'core/logout.html')
