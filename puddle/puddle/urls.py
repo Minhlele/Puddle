@@ -25,6 +25,7 @@ urlpatterns = [
     path("dashboard/", include("dashboard.urls")),
     path("inbox/", include("conversation.urls")),
     path("admin/", admin.site.urls),
+    path("userprofile/", include("userprofile.urls")),
     path('wishlist/', include('wishlist.urls', namespace='wishlist')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
