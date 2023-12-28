@@ -1,30 +1,25 @@
 from django import forms
 from userprofile.models import Profile
 
-class ProfileForm(forms.ModelForm):
-    first_name = forms.CharField(max_length=255)
-    last_name = forms.CharField(max_length=255)
-    email = forms.EmailField()
+from django import forms
+from .models import Profile
 
+class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['username','email','password1','password2']
-class SignupForm(UserCreationForm):
-    class Meta:
-        model = User
-        fields = ['username','email','password1','password2']
-    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Your username', 'class': 'w-full py-4 px-6 rounded-xl'}))
-    email = forms.CharField(widget=forms.EmailInput(attrs={'placeholder': 'Your email address', 'class': 'w-full py-4 px-6 rounded-xl'}))
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Your password', 'class': 'w-full py-4 px-6 rounded-xl'}))
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Please repeat the password', 'class': 'w-full py-4 px-6 rounded-xl'}))
+        fields = ['first_name', 'last_name', 'bio', 'location', 'phone']
+        widgets = {
+            'first_name': forms.TextInput(attrs={'placeholder': 'First Name','class': 'w-full py-4 px-6 rounded-xl'}),
+            'last_name': forms.TextInput(attrs={'placeholder': 'Last Name','class': 'w-full py-4 px-6 rounded-xl'}),
+            'bio': forms.Textarea(attrs={'placeholder': 'Bio','class': 'w-full py-4 px-6 rounded-xl'}),
+            'location': forms.TextInput(attrs={'placeholder': 'Location','class': 'w-full py-4 px-6 rounded-xl'}),
+            'phone': forms.TextInput(attrs={'placeholder': 'Phone','class': 'w-full py-4 px-6 rounded-xl'}),
+        }
 
-def form_validation_error(form):
-    """
-    Form Validation Error
-    If any error happened in your form, this function returns the error message.
-    """
-    msg = ""
-    for field in form:
-        for error in field.errors:
-            msg += "%s: %s \\n" % (field.label if hasattr(field, 'label') else 'Error', error)
-    return msg
+    def save(self, user=None, commit=True):
+        profile = super().save(commit=False)
+        if user:
+            profile.user = user
+        if commit:
+            profile.save()
+        return profile

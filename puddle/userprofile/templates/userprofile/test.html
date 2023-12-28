@@ -1,13 +1,10 @@
-{% extends "core/base.html" %}
-{% block title %}
-Your Account
-{% endblock %} 
-{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Account</title>
 <style>
     body {
         font-family: Arial, sans-serif; /* Using a common font */
@@ -26,11 +23,10 @@ Your Account
 
     .title {
         width: 100%; /* Full width */
-        font-size: 40px; /* Title font size */
+        font-size: 24px; /* Title font size */
         margin-top: 50px; /* Space from top */
         margin-bottom: 30px; /* Space before the boxes */
         text-align: center;
-        font-weight: bold;
     }
 
     .box {
@@ -60,7 +56,6 @@ Your Account
     .box-content {
         text-align: left; /* Align text to the left */
         flex-grow: 1; /* Take up remaining space */
-        
     }
 
     .box-title {
@@ -71,8 +66,6 @@ Your Account
 
     .box-text {
         margin: 5px 0; /* Space around the text */
-        margin-bottom: 20px;
-       
     }
 
     .edit-button {
@@ -102,80 +95,78 @@ Your Account
 </head>
 <body>
 
+<div class="title">Your Account</div>
 <div class="container">
-    <div class="title">My Profile</div>
+    <!-- Box 1 -->
+    <div class="box">
+        <div class="icon-container">
+            <!-- Icon Image -->
+        </div>
+        <div class="box-content">
+            <div class="box-title">Your Orders</div>
+            <div class="box-text">Track, return, cancel an order, download invoice or buy again</div>
+            <button class="mt-2 py-4 px-8 text-lg bg-teal-500 text-white rounded-xl">Edit Bio</button>
+        </div>
+    </div>
+    
+    <!-- Box 2 -->
+    <div class="box">
+        <div class="icon-container">
+            <!-- Icon Image -->
+        </div>
+        <div class="box-content">
+            <div class="box-title">Your Addresses</div>
+            <div class="box-text">Edit, remove or set default address</div>
+            <a href="#" class="edit-button">Edit Bio</a>
+        </div>
+    </div>
+    
+    <!-- Box 3 -->
+    <div class="box">
+        <div class="icon-container">
+            <!-- Icon Image -->
+        </div>
+        <div class="box-content">
+            <div class="box-title">Login & Security</div>
+            <div class="box-text">Edit login, name, and mobile number</div>
+            <a href="#" class="edit-button">Edit Bio</a>
+        </div>
+    </div>
+    <div class="box">
+        <div class="icon-container">
+            <!-- Icon Image -->
+        </div>
+        <div class="box-content">
+            <div class="box-title">Login & Security</div>
+            <div class="box-text">Edit login, name, and mobile number</div>
+            <a href="#" class="edit-button">Edit Bio</a>
+        </div>
+    </div>
+    <div class="box">
+        <div class="icon-container">
+            <!-- Icon Image -->
+        </div>
+        <div class="box-content">
+            <div class="box-title">Login & Security</div>
+            <div class="box-text">Edit login, name, and mobile number</div>
+            <a href="#" class="edit-button">Edit Bio</a>
+        </div>
+    </div>
+    <div class="box">
+        <div class="icon-container">
+            <!-- Icon Image -->
+        </div>
+        <div class="box-content">
+            <div class="box-title">Login & Security</div>
+            <div class="box-text">Edit login, name, and mobile number</div>
+            <a href="#" class="edit-button">Edit Bio</a>
+        </div>
+    </div>
 
     
-    <div class="box">
-        <div class="icon-container">
-            <!-- Icon Image -->
-        </div>
-        <div class="box-content">
-            <div class="box-title">Your Bio</div>
-            <div class="box-text">View or edit your bio</div>
-            <!-- <a href="#" class="edit-button">Edit User</a> -->
-            <a href="{% url 'userprofile:edit_profile' %}" class="mt-4 py-3 px-5 text-lg bg-blue-500 hover:bg-blue-700 text-white rounded-xl font-semibold">Edit Bio</a>
-        </div>
-    </div>
-    <div class="box">
-        <div class="icon-container">
-            <!-- Icon Image -->
-        </div>
-        <div class="box-content">
-            <div class="box-title">Your Products</div>
-            <div class="box-text">View or edit your products</div>
-            <!-- <a href="#" class="edit-button">Edit User</a> -->
-            <a href="{% url 'dashboard:index' %}" class="mt-4 py-3 px-5 text-lg bg-blue-500 hover:bg-blue-700 text-white rounded-xl font-semibold">Edit Products</a>
-        </div>
-    </div>
-    <div class="box">
-        <div class="icon-container">
-            <!-- Icon Image -->
-        </div>
-        <div class="box-content">
-            <div class="box-title">Your Wish List</div>
-            <div class="box-text">View or edit your wishlist</div>
-            <!-- <a href="#" class="edit-button">Edit User</a> -->
-            <a href="{% url 'wishlist:index' %}" class="mt-4 py-3 px-5 text-lg bg-blue-500 hover:bg-blue-700 text-white rounded-xl font-semibold">Edit Wishlist</a>
-        </div>
-    </div>
-    <div class="box">
-        <div class="icon-container">
-            <!-- Icon Image -->
-        </div>
-        <div class="box-content">
-            <div class="box-title">Your Inbox</div>
-            <div class="box-text">View and message your sellers</div>
-            <!-- <a href="#" class="edit-button">Edit User</a> -->
-            <a href="{% url 'conversation:inbox' %}" class="mt-4 py-3 px-5 text-lg bg-blue-500 hover:bg-blue-700 text-white rounded-xl font-semibold">View Inbox</a>
-        </div>
-    </div>
-    <div class="box">
-        <div class="icon-container">
-            <!-- Icon Image -->
-        </div>
-        <div class="box-content">
-            <div class="box-title">Past Orders</div>
-            <div class="box-text">View your past orders</div>
-            <!-- <a href="#" class="edit-button">Edit User</a> -->
-            <a href="#" class="mt-4 py-3 px-5 text-lg bg-blue-500 hover:bg-blue-700 text-white rounded-xl font-semibold">View Orders</a>
-        </div>
-    </div>
-    <div class="box">
-        <div class="icon-container">
-            <!-- Icon Image -->
-        </div>
-        <div class="box-content">
-            <div class="box-title">Need Help?</div>
-            <div class="box-text">Chat with our agents</div>
-            <!-- <a href="#" class="edit-button">Edit User</a> -->
-            <a href="#" class="mt-4 py-3 px-5 text-lg bg-blue-500 hover:bg-blue-700 text-white rounded-xl font-semibold">Join Chat</a>
-        </div>
-    </div>
-
+    
+    <!-- ... More boxes ... -->
 </div>
 
 </body>
 </html>
-
-{% endblock %}
